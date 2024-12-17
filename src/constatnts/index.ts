@@ -10,4 +10,6 @@ export const ICONS_SVG = {
     Icons_Human: '/icons/human.svg',
     Icons_Box: '/icons/box.svg',
     Icons_Shutdown: '/icons/shutdown.svg',
+    Icons_LeftArrow: '/icons/leftarrow.svg',
+    Icons_LeftArrow_: '/icons/leftarrow_.svg',
 }
