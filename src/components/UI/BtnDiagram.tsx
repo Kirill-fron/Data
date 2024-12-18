@@ -3,7 +3,7 @@ import getMapData from "@/api/map-data";
 import Modal from './Modal'
 const BtnDiagram = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<unknown[]>([]);
   const [totalNodes, setTotalNodes] = useState(0);
 
 

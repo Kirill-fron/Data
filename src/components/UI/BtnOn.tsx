@@ -1,16 +1,22 @@
 import React from "react";
 import Image from "next/image";
+import { BtnOnProps } from "@/types";
 import { ICONS_SVG } from "@/constatnts/index";
-const BtnOn = () => {
+const BtnOn: React.FC<BtnOnProps> = ({status}) => {
+  const isOn = status === "on";
   return (
-    <button className="flex items-center gap-5 font-medium text-white">
+    <button
+      className={`flex items-center gap-5 font-medium ${
+        isOn ? "text-green-500" : "text-red-500"
+      }`}
+    >
       <Image
         width={27}
         height={27}
-        src={ICONS_SVG.Icons_Shutdown}
+        src={isOn ? ICONS_SVG.Icons_Shutdown : ICONS_SVG.Icons_ShutdownOff}
         alt="shutdown"
       />
-      On
+      {isOn ? "On" : "Off"}
     </button>
   );
 };

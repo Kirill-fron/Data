@@ -1,12 +1,8 @@
-export interface DataCenterItemProps {
-  text: string;
-}
-
 export interface DataCenterProps {
   title: string;
   count: number;
   chartImageSrc: string;
-  items: DataCenterItemProps[];
+  items: [];
   text: string;
   color: string;
 }
@@ -25,15 +21,52 @@ export interface MapDataItem {
   ip: string;
 }
 
+export interface Noder {
+  moniker: string;
+  address: string;
+}
+
+export interface RpcItem {
+  noder: Noder;
+  rpcIp?: string;
+  grpcIp?: string;
+  apiIp?: string;
+  evmIp?: string;
+  moniker: string;
+  uptime: string;
+  tx_index: "on" | "off";
+}
+
+export interface NetworkData {
+  rpcs: {
+    cosmos: RpcItem[];
+  };
+}
+
+export interface BtnCosmosProps {
+  onClick: () => void;
+}
+
+export interface BtnEVMProps {
+  onClick: () => void;
+}
+
+export interface BtnOnProps {
+  status: "on" | "off";
+}
+
+export interface TableDataProps {
+  data: RpcItem;
+}
 
 export interface ModalProps {
   onClose: () => void;
-  data: any[];
+  data: unknown[];
   totalNodes: number;
 }
 
 export interface PaginationProps {
-  totalPages: number; 
-  currentPage: number; 
-  onPageChange: (page: number) => void; 
+  totalPages: number;
+  currentPage: number;
+  onPageChange: (page: number) => void;
 }

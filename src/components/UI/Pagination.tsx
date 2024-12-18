@@ -24,9 +24,9 @@ const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <>
-      <div className="flex justify-center z-10  py-2 mt-8 w-full min-h-[54px] ">
+      <div className="relative flex justify-center z-10  py-2 mt-8 w-full md:min-h-[54px] ">
         <div className="flex flex-col self-stretch my-auto min-w-[240px] max-w-[462px]">
-          <div className="flex items-center w-full  ">
+          <div className="  md:flex items-center  md:w-full  ">
             <button
               className="flex justify-center items-center px-2.5 pt-1.5 pb-1.5 h-full rounded-md min-w-[41px] w-[41px]"
               aria-label="First page"

@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import { DataCenterProps, MapDataItem } from "@/types";
 import BtnDiagram from "./UI/BtnDiagram";
@@ -35,9 +34,11 @@ const Diagram: React.FC<DataCenterProps> = ({}) => {
   };
 
   const getColor = (percentage: number) => {
-    if (percentage > 50) return "#514A96";
+    if (percentage > 40) return "#514A96";
     if (percentage > 30) return "#DA6940";
+    if (percentage > 25) return "#8E2E2E";
     if (percentage > 20) return "#7AA987";
+    if (percentage > 15) return "#D29D8A";
     if (percentage > 10) return "#006AFF";
     if (percentage > 5) return "#008ADA";
     return "purple";
@@ -49,16 +50,16 @@ const Diagram: React.FC<DataCenterProps> = ({}) => {
 
   return (
     <>
-      <div className="flex flex-col justify-center overflow-hidden  p-7 w-full max-w-[400px] max-h-[380px]  rounded-3xl bg-[#1a1c20]">
+      <div className="flex flex-col justify-center overflow-hidden  p-5 w-full max-w-[410px] sm:max-w-[410px] max-h-[380px] sm:max-h-[380px]  rounded-3xl bg-[#1a1c20]">
         <div className="flex justify-between  w-full text-white">
-          <div className="self-stretch my-auto text-lg font-light">
+          <div className="self-stretch my-auto text-sm sm:text-lg font-light">
             Node Data center
           </div>
-          <div className=" relative flex gap-3 items-center self-stretch my-auto text-2xl whitespace-nowrap">
+          <div className=" relative flex gap-2 sm:gap-3  items-center self-stretch my-auto text-xl sm:text-2xl whitespace-nowrap">
             {groups.map((group, index) => (
               <span
                 key={index}
-                className="  w-[25px] h-[25px] rounded-full absolute"
+                className=" w-[20px] sm:w-[25px] h-[20px] sm:h-[25px] rounded-full absolute"
                 style={{
                   backgroundColor: getColor(
                     calculatePercentage(group[1].length)
@@ -70,11 +71,15 @@ const Diagram: React.FC<DataCenterProps> = ({}) => {
               ></span>
             ))}
 
-            <p className=" pl-8 self-stretch my-auto">{totalNodes}</p>
+            <p className="pl-6 sm:pl-8 self-stretch my-auto">{totalNodes}</p>
           </div>
         </div>
-        <div className="flex gap-1 items-center mt-5 w-full  text-sm font-light whitespace-nowrap text-slate-500">
-          <svg width="137" height="137">
+        <div className="flex gap-1 items-center  mt-4 sm:mt-5 w-full  text-xs sm:text-sm font-light whitespace-nowrap text-slate-500">
+          <svg
+            width="137"
+            height="137"
+            className="md:w-[17px] md:h-[17px] sm:mx-1"
+          >
             {groups.map((group, index) => (
               <circle
                 key={index}
@@ -99,7 +104,7 @@ const Diagram: React.FC<DataCenterProps> = ({}) => {
             />
           </svg>
 
-          <div className="flex flex-col max-w-[200px] text-[14px] gap-1 ml-1">
+          <div className="flex flex-col sm:max-w-[200px] text-[12px] sm:text-[14px] gap-1 ml-1">
             {groups.map((group, index) => (
               <div key={index} className="flex items-center gap-1">
                 <span
@@ -108,11 +113,11 @@ const Diagram: React.FC<DataCenterProps> = ({}) => {
                     borderColor: getColor(calculatePercentage(group[1].length)),
                   }}
                 ></span>
-                <div className="flex gap-1 line-clamp-2">
+                <div className="flex gap-1 ">
                   <p className=" mb-[7px]">{group[1][0].isp}</p>
-                  <p className=" text-slate-100">
+                  <p className="text-[10px]  text-slate-100">
                     {group[1].length} (
-                    {calculatePercentage(group[1].length).toFixed(2)}%)
+                    {calculatePercentage(group[1].length).toFixed(1)}%)
                   </p>
                 </div>
               </div>
